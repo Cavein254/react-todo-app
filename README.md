@@ -24,6 +24,6 @@ npm start
 ### App Images:
   
 ![ToDo0](/images/ToDo0.png)  
-![ToDo](/images/ToDo.png)  
-![ToDo1](/images/ToDo1.png)  
+![ToDo](/images/ToDo1.png)  
+![ToDo1](/images/ToDo2.png)  
      
