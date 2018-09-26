@@ -20,3 +20,10 @@ python3 python_server/main.py
   
 Terminal 2:  
 npm start  
+
+### App Images:
+  
+![ToDo0](/images/ToDo0.png)  
+![ToDo](/images/ToDo.png)  
+![ToDo1](/images/ToDo1.png)  
+     
