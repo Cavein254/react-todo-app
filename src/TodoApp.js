@@ -75,8 +75,13 @@ class TodoApp extends Component {
 
 	initialize() {
 		fetch("/todo")
-		.then(response => response.json())
-		.then(jsonResponse => this.setState({data: jsonResponse["data"]}));
+		.then(response => {
+      if (!response.ok)
+        throw Error(response.statusText);
+      return response.json();
+    })
+		.then(res => this.setState({data: res["data"]}))
+		.catch(error => console.log(error));
 	}
 
 	addTodo(todoText) {
@@ -89,7 +94,9 @@ class TodoApp extends Component {
 			'Content-Type': 'application/json'
 			}
 		})
-		.then(() => console.log(`Added Todo with Text: ${todoText} and id: ${todo.id}`));
+		.then(() => console.log(`Added Todo with Text: ${todoText} and id: ${todo.id}`))
+		.catch(error => console.log(error));
+
 		this.state.data.push(todo);
 		this.setState({data: this.state.data});
 	}
@@ -103,7 +110,9 @@ class TodoApp extends Component {
 				'Content-Type': 'application/json'
 			}
 		})
-		.then(() => console.log(`Checked Todo with text: ${todo.text}`));
+		.then(() => console.log(`Checked Todo with text: ${todo.text}`))
+		.catch(error => console.log(error));
+
 		this.setState({data: this.state.data.map(item => item.id === todo.id ? todo : item)});
 	}
 
@@ -116,7 +125,8 @@ class TodoApp extends Component {
 			'Content-Type': 'application/json'
 			}
 		})
-		.then(() => console.log(`Deleted Todo with id: ${todoId}`));
+		.then(() => console.log(`Deleted Todo with id: ${todoId}`))
+		.catch(error => console.log(error));
 		this.setState({data: this.state.data.filter(item => item.id !== todoId)});
 	}
 
