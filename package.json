@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "concurrently --kill-others \"react-scripts start\" \"python python_server/main.py\"",
-    "build": "react-scripts build",
+    "build": "react-scripts build"
   },
   "proxy": "http://localhost:8888",
   "devDependencies": {
